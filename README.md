@@ -17,3 +17,9 @@ Fundamental of Biomedical Engineering Master and Ph.D. Program in Biomedical Eng
 ## Lecture 4: ML for medical images
 
 ## Lecture 5: Student presentations
+
+## Installation
+
+- Download Anaconda
+- Run Jupyter lab or Jupyter notebook
+- Install requirements using `requirements.txt`
