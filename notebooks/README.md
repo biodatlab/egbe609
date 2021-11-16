@@ -11,3 +11,9 @@ Notebooks for lecture 1 - 4.
 ### B : Gradient Descent
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/titipata/egbe609/blob/main/notebooks/egbe606-lecture1-gradient-descent.ipynb)
+
+## Week 2
+
+Natural language processing
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/titipata/egbe609/blob/main/notebooks/egbe606-lecture2-nlp.ipynb)
