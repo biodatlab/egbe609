@@ -23,3 +23,7 @@ Natural language processing
 Neural Network and Convolutional Neural Network
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/titipata/egbe609/blob/main/notebooks/egbe606-lecture3-nn.ipynb)
+
+## Week 4
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/titipata/egbe609/blob/main/notebooks/egbe606_lecture4_signal.ipynb)
