@@ -31,7 +31,7 @@ def predict(path: str):
     img = transform(img)
     model.eval()
     logits = model(img.unsqueeze(0))
-    pred = logits.ravel().argmax().tolist()
+    pred = logits.argmax().tolist()
     return pred
 
 
