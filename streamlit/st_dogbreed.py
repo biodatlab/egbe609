@@ -12,9 +12,14 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-n_classes = 120
+n_classes = 120  # number of breeds classes
 model = models.inception_v3(pretrained=True)
-model.fc = nn.Sequential(nn.Linear(2048, 512), nn.ReLU(), nn.Dropout(0.3), nn.Linear(512, n_classes))
+model.fc = nn.Sequential(
+    nn.Linear(2048, 512),
+    nn.ReLU(),
+    nn.Dropout(0.3),
+    nn.Linear(512, n_classes)
+)
 model.load_state_dict(torch.load('inception_dog_breed.pt'))
 
 class_to_idx = json.load(open("class_to_idx.json", "r"))
@@ -30,7 +35,7 @@ def predict(path: str):
     return pred
 
 
-st.title("Upload + Classification Example")
+st.title("Dog Breed Classification")
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
