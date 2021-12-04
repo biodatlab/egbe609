@@ -38,4 +38,4 @@ if uploaded_file is not None:
     st.write("")
     st.write("Classifying...")
     pred = predict(uploaded_file)
-    st.write(f'Predicted label: {idx_to_class[pred]}')
+    st.write(f'Predicted label: {idx_to_class[pred].capitalize().replace("_", " ")}')
