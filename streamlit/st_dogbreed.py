@@ -13,8 +13,9 @@ transform = transforms.Compose([
 ])
 
 n_classes = 120
-model = models.inception_v3(pretrained=False)
+model = models.inception_v3(pretrained=True)
 model.fc = nn.Sequential(nn.Linear(2048, 512), nn.ReLU(), nn.Dropout(0.3), nn.Linear(512, n_classes))
+model.load_state_dict(torch.load('inception_dog_breed.pt'))
 
 class_to_idx = json.load(open("class_to_idx.json", "r"))
 idx_to_class = {v: k for k, v in class_to_idx.items()}
