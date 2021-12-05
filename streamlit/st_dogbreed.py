@@ -24,9 +24,10 @@ model = models.inception_v3(pretrained=True)
 model.fc = nn.Sequential(
     nn.Linear(2048, 512), nn.ReLU(), nn.Dropout(0.3), nn.Linear(512, n_classes)
 )
-MODEL_PATH = "https://detecting-scientific-claim.s3.us-west-2.amazonaws.com/inception_dog_breed.pt"
-with urlopen(MODEL_PATH) as f:
-    model.load_state_dict(torch.load(io.BytesIO(f.read())))
+# Note that I only save `fc` layer weights, and not the whole model.
+# torch.save(model.fc.state_dict(), "fc.pt")
+MODEL_PATH = "fc.pt"
+model.fc.load_state_dict(torch.load(MODEL_PATH))
 
 
 def predict(path: str):
