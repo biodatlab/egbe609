@@ -17,7 +17,7 @@ transform = transforms.Compose(
     ]
 )
 
-class_to_idx = json.load(open("class_to_idx.json", "r"))
+class_to_idx = json.load(open("streamlit/class_to_idx.json", "r"))
 idx_to_class = {v: k for k, v in class_to_idx.items()}
 n_classes = len(idx_to_class.keys())  # number of breeds classes
 model = models.inception_v3(pretrained=True)
@@ -26,7 +26,7 @@ model.fc = nn.Sequential(
 )
 # Note that I only save `fc` layer weights, and not the whole model.
 # torch.save(model.fc.state_dict(), "fc.pt")
-MODEL_PATH = "fc.pt"
+MODEL_PATH = "streamlit/fc.pt"
 model.fc.load_state_dict(torch.load(MODEL_PATH))
 
 
