@@ -5,3 +5,7 @@ torch
 numpy
 scipy
 pandas
+wget
+torch
+torchvision
+PIL
