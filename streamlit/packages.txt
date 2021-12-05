@@ -1,1 +1,4 @@
 wget
+torch
+torchvision
+PIL
