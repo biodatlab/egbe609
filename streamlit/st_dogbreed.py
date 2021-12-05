@@ -16,7 +16,6 @@ transform = transforms.Compose(
     ]
 )
 
-n_classes = 120  # number of breeds classes
 model = models.inception_v3(pretrained=True)
 model.fc = nn.Sequential(
     nn.Linear(2048, 512), nn.ReLU(), nn.Dropout(0.3), nn.Linear(512, n_classes)
@@ -30,6 +29,7 @@ else:
 
 class_to_idx = json.load(open("class_to_idx.json", "r"))
 idx_to_class = {v: k for k, v in class_to_idx.items()}
+n_classes = len(idx_to_class.keys())  # number of breeds classes
 
 
 def predict(path: str):
