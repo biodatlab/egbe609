@@ -8,4 +8,4 @@ pandas
 wget
 torch
 torchvision
-PIL
+pillow
