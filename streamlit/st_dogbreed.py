@@ -1,3 +1,5 @@
+import wget
+import os.path as op
 import streamlit as st
 import json
 from PIL import Image
@@ -20,6 +22,8 @@ model.fc = nn.Sequential(
     nn.Dropout(0.3),
     nn.Linear(512, n_classes)
 )
+if not op.exists('inception_v3_weights.pth'):
+    wget.download('https://detecting-scientific-claim.s3.us-west-2.amazonaws.com/inception_dog_breed.pt')
 model.load_state_dict(torch.load('inception_dog_breed.pt'))
 
 class_to_idx = json.load(open("class_to_idx.json", "r"))
