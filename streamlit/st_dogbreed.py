@@ -1,4 +1,5 @@
-import wget
+import io
+from urllib.request import urlopen
 import os.path as op
 import streamlit as st
 import json
@@ -16,20 +17,16 @@ transform = transforms.Compose(
     ]
 )
 
+class_to_idx = json.load(open("class_to_idx.json", "r"))
+idx_to_class = {v: k for k, v in class_to_idx.items()}
+n_classes = len(idx_to_class.keys())  # number of breeds classes
 model = models.inception_v3(pretrained=True)
 model.fc = nn.Sequential(
     nn.Linear(2048, 512), nn.ReLU(), nn.Dropout(0.3), nn.Linear(512, n_classes)
 )
-if not op.exists("inception_dog_breed.pt"):
-    wget.download(
-        "https://detecting-scientific-claim.s3.us-west-2.amazonaws.com/inception_dog_breed.pt"
-    )
-else:
-    model.load_state_dict(torch.load("inception_dog_breed.pt"))
-
-class_to_idx = json.load(open("class_to_idx.json", "r"))
-idx_to_class = {v: k for k, v in class_to_idx.items()}
-n_classes = len(idx_to_class.keys())  # number of breeds classes
+MODEL_PATH = "https://detecting-scientific-claim.s3.us-west-2.amazonaws.com/inception_dog_breed.pt"
+with urlopen(MODEL_PATH) as f:
+    model.load_state_dict(torch.load(io.BytesIO(f.read())))
 
 
 def predict(path: str):
